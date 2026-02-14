@@ -114,21 +114,15 @@
         <div class="letter">
                <p><strong>Happy Valentine's Day Gino!</strong></p>
 
-
-
     <p>First, I want to thank you by showing this website of our memories and a message of appreciation.
 
     Second, I want to express my deep feelings since we haven't been in touch and it's hard for both of us.
 
     Lastly, this message is about our passion to create a story — a story that never fails, a story that understands.</p>
 
-
-
     <p>I want to tell you how much I love you every day. I want to show you how willing I am to be your other half,
 
     to give my soul entirely to you. You deserve more than anything I could possibly think of.</p>
-
-
 
     <p>Baby, it may sound cheesy since I really don’t like to talk like this, but I am always happy that you are there for me.
 
@@ -138,19 +132,13 @@
 
     that I am looking for to argue with.</p>
 
-
-
     <p>Even though we are not always physically together, I still want you to feel the love you deserve.
 
     I’m sorry for the things I lack, but I want you to know that communication is what will help us fight for this relationship.</p>
 
-
-
     <p>I am willing to experience more than just a screen typing session with you.
 
     I want to have a home where you are part of it.</p>
-
-
 
     <p><strong>I love you, Gino. ❤️</strong></p>
 
@@ -159,9 +147,17 @@
     </div>
 </div>
 
-<audio id="music-player" loop preload="auto">
-    <source src="Laufey - Valentine (Lyrics).mp3" type="audio/mpeg">
-</audio>
+<!-- SoundCloud Valentine Music -->
+<div id="music-player">
+    <iframe 
+        width="100%" 
+        height="166" 
+        scrolling="no" 
+        frameborder="no" 
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/laufeylin/valentine-1&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+    </iframe>
+</div>
 
 <script>
     const music = document.getElementById('music-player');
@@ -169,12 +165,12 @@
     const instruction = document.getElementById('instruction');
 
     function toggleMusic() {
-        if (music.paused) {
-            music.play().catch(e => console.log("Audio play failed:", e));
+        if (music.style.display === "none") {
+            music.style.display = "block"; // Show SoundCloud player
             cd.classList.add('spin');
             instruction.innerText = "Tap anywhere to pause";
         } else {
-            music.pause();
+            music.style.display = "none"; // Hide SoundCloud player
             cd.classList.remove('spin');
             instruction.innerText = "Tap anywhere to play";
         }
