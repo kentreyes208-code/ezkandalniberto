@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Gino</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background: #e8f1e4;
+            overflow-x: hidden;
+            color: #2f3e2e;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        header h1 { font-size: 2rem; margin-bottom: 10px; }
+
+        .section {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+            background: #ffffffcc;
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .card img { width: 100%; display: block; }
+
+        .music-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* CD Styling */
+        .cd-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .cd {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: url('https://i.imgur.com/UnVBhpt.jpg') center/cover;
+            border: 8px solid #cfe3d1;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        .cd::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px; height: 30px;
+            background: #e8f1e4;
+            border-radius: 50%;
+            border: 4px solid #cfe3d1;
+        }
+
+        /* Continuous Rotation */
+        .spin { animation: spin 5s linear infinite; }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .letter { padding: 30px; line-height: 1.8; font-size: 1.05rem; }
+        
+        #status-text {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #7ca982;
+            font-style: italic;
+        }
+
+        #music-player { display: none; }
+    </style>
+</head>
+<body onclick="toggleMusic()">
+
+<header>
+    <h1>Happy Valentine's Day, Gino</h1>
+    <p id="instruction" style="font-size: 14px; color: #7ca982;">Tap anywhere to play our song</p>
+</header>
+
+<div class="section"><div class="card"><img src="https://i.imgur.com/UnVBhpt.jpg"></div></div>
+<div class="section"><div class="card"><img src="https://i.imgur.com/aDgQsjF.jpg"></div></div>
+
+<div class="music-section">
+    <div class="cd-container">
+        <div id="cd" class="cd"></div>
+    </div>
+    <p id="status-text">Valentine - Laufey</p>
+</div>
+
+<div class="section">
+    <div class="card">
+        <div class="letter">
+               <p><strong>Happy Valentine's Day Gino!</strong></p>
+
+
+
+    <p>First, I want to thank you by showing this website of our memories and a message of appreciation.
+
+    Second, I want to express my deep feelings since we haven't been in touch and it's hard for both of us.
+
+    Lastly, this message is about our passion to create a story — a story that never fails, a story that understands.</p>
+
+
+
+    <p>I want to tell you how much I love you every day. I want to show you how willing I am to be your other half,
+
+    to give my soul entirely to you. You deserve more than anything I could possibly think of.</p>
+
+
+
+    <p>Baby, it may sound cheesy since I really don’t like to talk like this, but I am always happy that you are there for me.
+
+    I once dreamt of having someone to argue with while washing dishes, doing laundry, and cooking —
+
+    someone to debate and chitchat with, someone I love. I guess we will let time speak for itself if it’s you
+
+    that I am looking for to argue with.</p>
+
+
+
+    <p>Even though we are not always physically together, I still want you to feel the love you deserve.
+
+    I’m sorry for the things I lack, but I want you to know that communication is what will help us fight for this relationship.</p>
+
+
+
+    <p>I am willing to experience more than just a screen typing session with you.
+
+    I want to have a home where you are part of it.</p>
+
+
+
+    <p><strong>I love you, Gino. ❤️</strong></p>
+
+</div>
+        </div>
+    </div>
+</div>
+
+<audio id="music-player" loop preload="auto">
+    <source src="Downloads/Laufey - Valentine (Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const music = document.getElementById('music-player');
+    const cd = document.getElementById('cd');
+    const instruction = document.getElementById('instruction');
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play().catch(e => console.log("Audio play failed:", e));
+            cd.classList.add('spin');
+            instruction.innerText = "Tap anywhere to pause";
+        } else {
+            music.pause();
+            cd.classList.remove('spin');
+            instruction.innerText = "Tap anywhere to play";
+        }
+    }
+</script>
+
+</body>
+</html>
